@@ -3,6 +3,7 @@ import { Field } from 'jsforce/describe-result';
 // import {Field } from '@'
 interface User extends Record {
     Username?: string;
+    ProfileId?: string;
 }
 
 interface ContentVersion extends Record {
@@ -80,7 +81,7 @@ interface ObjectConfig {
 }
 
 interface Record {
-    attributes: object;
+    attributes?: object;
     Id: string;
 
     Name?: string;
@@ -208,6 +209,19 @@ interface AiAuthResponse {
     refresh_token?: string;
 }
 
+interface EntityParticle extends Record {
+    IsPermissionable: boolean;
+    QualifiedApiName: string;
+    IsUpdatable: boolean;
+}
+interface FieldPermissions extends Record {
+    PermissionsRead: boolean;
+    PermissionsEdit: boolean;
+    SobjectType: string;
+    Field: string;
+    ParentId: string;
+}
+
 export {
     Record,
     ContentVersion,
@@ -226,5 +240,7 @@ export {
     FieldMeta,
     ContentVersionCreateRequest,
     User,
-    AiAuthResponse
+    AiAuthResponse,
+    EntityParticle,
+    FieldPermissions
 };
